@@ -1,0 +1,128 @@
+/* General */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #4c1d95; /* Fondo púrpura oscuro */
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+/* Login Section */
+.login-section {
+    margin-top: 5rem;
+    text-align: center;
+}
+
+.login-section .container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #5b21b6; /* Fondo púrpura más claro */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.login-section h1 {
+    font-size: 2rem;
+    color: #ddd6fe;
+    margin-bottom: 1.5rem;
+}
+
+.login-form .form-label {
+    color: #c4b5fd;
+    font-weight: bold;
+}
+
+.login-form .form-control {
+    background-color: #7c3aed;
+    border: none;
+    color: #fff;
+}
+
+.login-form .form-control:focus {
+    outline: 2px solid #c084fc;
+    background-color: #6b21a8;
+}
+
+.login-form .btn {
+    width: 48%;
+}
+
+.login-form .btn-secondary {
+    background-color: #6b7280;
+    color: #fff;
+}
+
+.login-form .btn-secondary:hover {
+    background-color: #4b5563;
+}
+
+.login-form .btn-primary {
+    background-color: #7c3aed;
+    color: #fff;
+}
+
+.login-form .btn-primary:hover {
+    background-color: #9f7aea;
+}
+
+/* Sección de búsqueda */
+.professors-section form {
+    background-color: #5b21b6; /* Fondo púrpura intermedio */
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.professors-section form .form-control,
+.professors-section form .form-select {
+    background-color: #4c1d95; /* Fondo púrpura oscuro */
+    color: #fff;
+    border: none;
+}
+
+.professors-section form .btn-primary {
+    background-color: #9333ea; /* Botón púrpura brillante */
+    border: none;
+}
+
+.professors-section form .btn-secondary {
+    background-color: #a78bfa; /* Botón secundario */
+    border: none;
+    color: #fff;
+}
+
+body {
+    background-color: #5e2e8a; /* Fondo morado */
+    color: #fff;
+}
+
+.btn-primary {
+    background-color: #7b48c5; /* Color de los botones */
+    border-color: #7b48c5;
+}
+
+.btn-primary:hover {
+    background-color: #6633a3; /* Color de hover en botones */
+    border-color: #6633a3;
+}
+
+body {
+    background-color: #5e2e8a; /* Fondo morado */
+    color: #fff;
+}
+
+.form-label {
+    color: #fff;
+}
+
+.btn-primary {
+    background-color: #7b48c5;
+    border-color: #7b48c5;
+}
+
+.btn-primary:hover {
+    background-color: #6633a3;
+}
+

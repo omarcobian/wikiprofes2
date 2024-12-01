@@ -31,3 +31,9 @@ class RegistroForm(forms.Form):
     def save(self):
         self.cleaned_data.pop('password2')
         return User.objects.create_user(**self.cleaned_data)
+    
+class iniciarSesion(forms.Form):
+
+    username = forms.CharField()
+    password = forms.CharField()
+    remember_me = True  # Checkbox para "Recordar sesión"

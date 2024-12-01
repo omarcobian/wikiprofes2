@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Crear Publicación</title>
+{% endblock title %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-white mb-4">Crear Publicación</h1>
+    <form method="post">
+        {% csrf_token %}
+        <!-- Seleccionar Materia -->
+        <div class="mb-3">
+            <label for="materia" class="form-label text-white">Materia</label>
+            <select id="materia" name="materia" class="form-select" required>
+                <option value="" selected disabled>Seleccione una materia</option>
+                {% for materia in materias %}
+                <option value="{{ materia.id }}">{{ materia.nombre }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <!-- Seleccionar Profesor -->
+        <div class="mb-3">
+            <label for="profesor" class="form-label text-white">Profesor</label>
+            <select id="profesor" name="profesor" class="form-select" required>
+                <option value="" selected disabled>Seleccione un profesor</option>
+                {% for profesor in profesores %}
+                <option value="{{ profesor.id }}">{{ profesor.nombre }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <!-- Título -->
+        <div class="mb-3">
+            <label for="titulo" class="form-label text-white">Título</label>
+            <input type="text" id="titulo" name="titulo" class="form-control" maxlength="80" placeholder="Título de tu publicación" required>
+        </div>
+        <!-- Fecha -->
+        <div class="mb-3">
+            <label for="fecha" class="form-label text-white">Fecha</label>
+            <input type="date" id="fecha" name="fecha" class="form-control" required>
+        </div>
+        <!-- Comentario -->
+        <div class="mb-3">
+            <label for="comentario" class="form-label text-white">Comentario</label>
+            <textarea id="comentario" name="comentario" class="form-control" rows="5" maxlength="2000" placeholder="Escribe tu comentario aquí..." required></textarea>
+        </div>
+        <!-- Puntuaciones -->
+        <div class="mb-3">
+            <label class="form-label text-white">Puntuaciones (de 1 a 5):</label>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="dominio" class="form-label text-white">Dominio</label>
+                    <input type="number" id="dominio" name="dominio" class="form-control" min="1" max="5" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="puntualidad" class="form-label text-white">Puntualidad</label>
+                    <input type="number" id="puntualidad" name="puntualidad" class="form-control" min="1" max="5" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="asistencia" class="form-label text-white">Asistencia</label>
+                    <input type="number" id="asistencia" name="asistencia" class="form-control" min="1" max="5" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="dificultad" class="form-label text-white">Dificultad</label>
+                    <input type="number" id="dificultad" name="dificultad" class="form-control" min="1" max="5" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="seguimiento" class="form-label text-white">Seguimiento</label>
+                    <input type="number" id="seguimiento" name="seguimiento" class="form-control" min="1" max="5" required>
+                </div>
+            </div>
+        </div>
+        <!-- Botones -->
+        <div class="mt-4">
+            <button type="submit" class="btn btn-primary">Guardar Publicación</button>
+            <a href="{% url 'publicaciones_list' %}" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+{% endblock content %}

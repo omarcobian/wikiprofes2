@@ -48,7 +48,12 @@ class CrearPublicacionView(CreateView):
     model = Publicacion
     form_class = PublicacionForm
     template_name = 'publicacion/crear_publicacion.html'  # Cambia esto si tu archivo tiene otro nombre
-    success_url = reverse_lazy('index')  # Cambia este nombre según tu URL definida
+    success_url = reverse_lazy('publicacion:index')  # Cambia este nombre según tu URL definida
+
+    def form_valid(self, form):
+        # Asignar el usuario autenticado al campo 'usuario'
+        form.instance.usuario = self.request.user
+        return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

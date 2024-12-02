@@ -30,7 +30,7 @@
                     </li>
                     {%if user.is_authenticated%}
                     <a class="navbar-brand" href="{% url 'usuario:logout' %}">Cerrar Sesion</a>
-                    <a class="navbar-brand" href="#">Crear Reseña</a>
+                    <a class="navbar-brand" href="{% url 'publicacion:crear_publicacion' %}">Crear Reseña</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>

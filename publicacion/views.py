@@ -1,6 +1,9 @@
 from django.views import generic, View
+from django.views.generic import CreateView
 from django.shortcuts import render
 from .models import Publicacion, Profesor, Materia
+from .forms import PublicacionForm
+from django.urls import reverse_lazy
 
 class PublicacionView(generic.ListView):
     template_name = 'publicacion/index.html'
@@ -40,3 +43,23 @@ class SearchView(View):
             'materias': materias,
         }
         return render(request, self.template_name, context)
+    
+class CrearPublicacionView(CreateView):
+    model = Publicacion
+    form_class = PublicacionForm
+    template_name = 'publicacion/crear_publicacion.html'  # Cambia esto si tu archivo tiene otro nombre
+    success_url = reverse_lazy('index')  # Cambia este nombre según tu URL definida
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['materias'] = self.get_materias()
+        context['profesores'] = self.get_profesores()
+        return context
+
+    def get_materias(self):
+        """Retorna todas las materias disponibles"""
+        return Materia.objects.all()
+
+    def get_profesores(self):
+        """Retorna todos los profesores disponibles"""
+        return Profesor.objects.all()

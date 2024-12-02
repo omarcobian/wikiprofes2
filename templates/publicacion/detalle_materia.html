@@ -1,7 +1,8 @@
 {% extends "base.html "%}
 {% block titulo %}
-<title>Publicaciones</title>
+<title>Sobre {{publicacion_list.0.materia}}</title>
 {% endblock titulo %}
+
 {% block content %}
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
@@ -24,26 +25,30 @@
                         <a class="nav-link" href="{% url 'publicacion:index' %}">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'profesor:lista_profesores' %}">Profesores</a>
+                        <a class="nav-link active" aria-current="page" href="#">Profesores</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{% url 'materia:lista_materias' %}">Materias</a>
                     </li>
-                    <form class="d-flex" role="search" action="{% url 'publicacion:search' %}">
-                        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" name="q">
-                        <button class="btn btn-outline-success" type="submit">Buscar</button>
+                    <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
                 </ul>
             </div>
         </div>
     </nav>
+    <div class="container">
+        <h1 class="mt-5">{{ publicacion_list.0.materia.nombre }}</h1>
+        <p class="mt-3">Clave: {{ publicacion_list.0.materia.clave }}</p>
+        <p>Departamento: {{ publicacion_list.0.materia.departamento }}</p>
+    </div>
     {% for publicacion in publicacion_list %}
     <section>
         <div class="container">
-            <div class="card mb-3" style="width: 18rem;">
+            <div class="card mb-3">
                 <div class="card-body">
                   <h5 class="card-title">{{publicacion.titulo}}</h5>
-                  <h6 class="card-subtitle mb-2 text-body-secondary text-end">sobre <a href="{% url 'publicacion:profesor' publicacion.profesor.id %}">{{publicacion.profesor}}</a></h6>
                   <p class="card-text">{{publicacion.comentario}}</p>
                 </div>
                 <div class="card-footer text-body-secondary text-end">

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Lista de Profesores</title>
+{% endblock title %}
+
+{% block content %}
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        {%if user.is_authenticated%}
+        <a class="navbar-brand" href="#">Cerrar Sesion</a>
+        <a class="navbar-brand" href="#">Reseñar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        {%else%}
+        <a class="navbar-brand" href="{% url 'usuario:inicio' %}">Iniciar Sesion</a>
+        <a class="navbar-brand" href="{% url 'usuario:registro' %}">Registrarse</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        {%endif%}
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'publicacion:index' %}">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Profesores</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'materia:lista_materias' %}">Materias</a>
+                </li>
+                <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <h1 class="mt-5">Lista de Profesores</h1>
+    <ul class="list-group mt-3">
+        {% for profesor in profesor_list %}
+        <li class="list-group-item">
+            <a href="{% url 'publicacion:profesor' profesor.id %}">{{ profesor.nombre }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock content %}

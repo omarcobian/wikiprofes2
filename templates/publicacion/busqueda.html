@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block titulo %}
+<title>Resultados de búsqueda para "{{ query }}"</title>
+{% endblock titulo %}
+{% block content %}
+<h1>Resultados de búsqueda para "{{ query }}"</h1>
+
+{% if profesores %}
+    <h2>Profesores</h2>
+    <ul>
+        {% for profesor in profesores %}
+        <li><a href="{% url 'publicacion:profesor' profesor.pk %}">{{ profesor.nombre }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No se encontraron profesores.</p>
+{% endif %}
+
+{% if materias %}
+    <h2>Materias</h2>
+    <ul>
+        {% for materia in materias %}
+        <li><a href="{% url 'publicacion:detalle_materia' materia.pk %}">{{ materia.nombre }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No se encontraron materias.</p>
+{% endif %}
+{% endblock content %}
